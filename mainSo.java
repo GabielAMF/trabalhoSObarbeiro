@@ -1,4 +1,4 @@
-package javaapplication22;
+package barbeirodorminhoco;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -46,9 +46,12 @@ public class BarbeiroDorminhoco {
             while(true){
                 cliente.lock();
                 mutua.lock();
+                System.out.println("Barbeiro Cortando");
+                System.out.println("Cliente Cortando");
                 clientWait--;
                 barbeiroCortando.unlock();
                 mutua.unlock();
+                System.out.println("Barbeiro Dorme");
                 //mensagem de execução
                 
             }
@@ -72,6 +75,7 @@ public class BarbeiroDorminhoco {
             if(clientWait<numMax){
                 //aviso de chegada do cliente *interface
                 clientWait++;
+                System.out.println("Cliente sentou");
                 cliente.unlock();
                 mutua.unlock();
                 barbeiroCortando.lock();
@@ -79,6 +83,7 @@ public class BarbeiroDorminhoco {
             }
             else{
                 mutua.lock();
+                System.out.println("Cliente foi embora");
                 //cliente é uma vadia impaciente
                 //cliente foi embora
                 // olhar metodo de interromper esse cliente por precaução
