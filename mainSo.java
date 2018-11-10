@@ -99,6 +99,7 @@ public class mainSo {
         }
     }
     public static void main(String[] args) {
+        BarbeiroDorminhoco.Barbeiro b = new BarbeiroDorminhoco.Barbeiro();
         
     }
 }
