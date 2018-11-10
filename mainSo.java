@@ -8,18 +8,18 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 public class mainSo {
-    public class BarbeiroDorminhoco {
 
-        private final Lock barbeiroCortando = new ReentrantLock();
-        private final Lock cliente = new ReentrantLock();
-        private final Lock mutua = new ReentrantLock();
-        private final int numMax = 10;
-        private int clientWait = 0;
-        private final Condition Cheio = barbeiroCortando.newCondition();
-        private final Condition Vazio = barbeiroCortando.newCondition();
+    
+        private static final Lock barbeiroCortando = new ReentrantLock();
+        private static final Lock cliente = new ReentrantLock();
+        private static final Lock mutua = new ReentrantLock();
+        private static final int numMax = 10;
+        private static int clientWait = 0;
+        private static final Condition Cheio = barbeiroCortando.newCondition();
+        private static final Condition Vazio = barbeiroCortando.newCondition();
 
 
-        public class Barbearia {
+        public static class Barbearia {
 
             private final int NCadeiras;
             private int Ncadeirasocupadas;
@@ -31,7 +31,7 @@ public class mainSo {
             }
         }
 
-        public class Barbeiro {
+        public static class Barbeiro {
 
 
             private boolean cortando;
@@ -64,10 +64,11 @@ public class mainSo {
             }
         }
 
-        public class Cliente {
-
-            public void cortar(){
-                //
+        public static class Cliente {
+            
+            public String nome;
+            public Cliente(String nome){
+                this.nome = nome;
             }
 
             public void sentar(){
@@ -97,9 +98,37 @@ public class mainSo {
                 //Caso estiver cheia, cliente vai embora
             }
         }
-    }
-    public static void main(String[] args) {
-        BarbeiroDorminhoco.Barbeiro b = new BarbeiroDorminhoco.Barbeiro();
+    
+    public static void main(String[] args) { 
+        Barbearia b2 = new Barbearia(8);
+        Barbeiro barbeiro = new Barbeiro();
+        Cliente c1 = new Cliente("Gabriel");
+        Cliente c2 = new Cliente("Gabriel1");
+        Cliente c3 = new Cliente("Gabriel2");
+        Cliente c4 = new Cliente("Gabriel3");
+        Cliente c5 = new Cliente("Gabriel4");
+        Cliente c6 = new Cliente("Gabriel5");
+        Cliente c7 = new Cliente("Gabriel6");
+        Cliente c8 = new Cliente("Gabriel7");
+        Cliente c9 = new Cliente("Gabriel8");
+        Cliente c10 = new Cliente("Gabrie8l");
+        Cliente c11 = new Cliente("Gabriel9");
+        Cliente c12 = new Cliente("Gabriel00");
+        Cliente c13 = new Cliente("Gabriel08");
         
-    }
+        
+        
+        c1.sentar();
+        c2.sentar();
+        c3.sentar();
+        c4.sentar();
+        c5.sentar();
+        c6.sentar();
+        c7.sentar();
+        c8.sentar();
+        c9.sentar();
+        barbeiro.cortar();
+        barbeiro.cortar();
+        
+    }   
 }
