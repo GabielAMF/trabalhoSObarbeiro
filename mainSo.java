@@ -42,7 +42,7 @@ public class mainSo {
                 this.dormindo = true;
             }
 
-            public void cortar(){
+            public synchronized void cortar(){
                 while(true){
                     cliente.lock();
                     mutua.lock();
@@ -71,7 +71,7 @@ public class mainSo {
                 this.nome = nome;
             }
 
-            public void sentar(){
+            public synchronized void sentar(){
                 mutua.lock();
                 //interface de cliente
                 if(clientWait<numMax){
