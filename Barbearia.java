@@ -15,7 +15,6 @@ public class Barbearia extends Thread{
             
     public synchronized void cortarCabelo() {
             try {   
-                    System.out.println("entrei CortarCabelo");
                     if (clientesNaFila.size() == 0) {
                             System.out.println("Barbeiro Dorme");
                             Thread.sleep(1000);
