@@ -6,18 +6,18 @@ public class main {
 
         Barbeiro barb = new Barbeiro(barbearia);
 
-        Cliente cli1 = new Cliente(barbearia, "[ Cliente 01 ]");
-        Cliente cli2 = new Cliente(barbearia, "[ Cliente 02 ]");
-        Cliente cli3 = new Cliente(barbearia, "[ Cliente 03 ]");
-        Cliente cli4 = new Cliente(barbearia, "[ Cliente 04 ]");
-        Cliente cli5 = new Cliente(barbearia, "[ Cliente 05 ]");
-        Cliente cli6 = new Cliente(barbearia, "[ Cliente 06 ]");
-        Cliente cli7 = new Cliente(barbearia, "[ Cliente 07 ]");
-        Cliente cli8 = new Cliente(barbearia, "[ Cliente 08 ]");
-        Cliente cli9 = new Cliente(barbearia, "[ Cliente 09 ]");
-        Cliente cli10 = new Cliente(barbearia, "[ Cliente 10 ]");
-        Cliente cli11 = new Cliente(barbearia, "[ Cliente 11 ]");
-        Cliente cli12 = new Cliente(barbearia, "[ Cliente 12 ]");
+        Cliente cli1 = new Cliente(barbearia, "João");
+        Cliente cli2 = new Cliente(barbearia, "Maria");
+        Cliente cli3 = new Cliente(barbearia, "Aline");
+        Cliente cli4 = new Cliente(barbearia, "Allan");
+        Cliente cli5 = new Cliente(barbearia, "Patrick");
+        Cliente cli6 = new Cliente(barbearia, "Gabriel");
+        Cliente cli7 = new Cliente(barbearia, "Ferreira");
+        Cliente cli8 = new Cliente(barbearia, "Smith");
+        Cliente cli9 = new Cliente(barbearia, "Philippe");
+        Cliente cli10 = new Cliente(barbearia, "Andre");
+        Cliente cli11 = new Cliente(barbearia, "Jessica");
+        Cliente cli12 = new Cliente(barbearia, "Fernanda");
 
         barb.start();
         cli1.start();
@@ -32,11 +32,5 @@ public class main {
         cli10.start();
         cli11.start();
         cli12.start();
-
-        while (true) {
-                int qtd = barbearia.getFilaClientes().size();
-                int atendidos = barbearia.getAtendidos();
-                boolean dormindo = barbearia.isDormindo();
-        }
         }
 }

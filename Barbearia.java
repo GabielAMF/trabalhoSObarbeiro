@@ -17,14 +17,14 @@ public class Barbearia extends Thread{
             try {   
                     if (clientesNaFila.size() == 0) {
                             System.out.println("Barbeiro Dorme");
-                            Thread.sleep(1000);
+                            wait();
                             System.out.println("Barbeiro Acorda e comeca a cortar");
                     }
 
                     if (clientesNaFila.size() > 0) {
-                                    clientesNaFila.poll();
                                     cortando = true;
                                     System.out.println("Aguarde enquando o " + clientesNaFila.peek().nome + " é atendido......");
+                                    clientesNaFila.poll();
                                     Thread.sleep(800);
                                     qtdeClienteAtendidos++;
                                     System.out.println("Foram atendidos " + qtdeClienteAtendidos + " clientes");
