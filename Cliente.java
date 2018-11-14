@@ -11,17 +11,15 @@ public class Cliente extends Thread{
     }
     
     public void run(){
-        while(querCortar){
+        
             try{
-                int sleepTime = 200;
+                int sleepTime = ((int) (Math.random() * 6000));
                 Thread.sleep(sleepTime);
-                
                 barbearia.aguardaVez(this);
-                
-            }catch(Exception e){
+            }catch(InterruptedException e){
                 System.err.println(e);
             }
-        }
+        
     }
     
 }

@@ -16,16 +16,17 @@ public class Barbearia extends Thread{
     public synchronized void cortarCabelo() {
             try {   
                     if (clientesNaFila.size() == 0) {
-                            System.out.println("Barbeiro Dorme");
+                            System.out.println("Barbeiro está dormindo");
                             wait();
-                            System.out.println("Barbeiro Acorda e comeca a cortar");
+                            System.out.println("Barbeiro Acordou para cortar o cabelo");
+                            qtdeClienteAtendidos++;
                     }
 
                     if (clientesNaFila.size() > 0) {
                                     cortando = true;
-                                    System.out.println("Aguarde enquando o " + clientesNaFila.peek().nome + " é atendido......");
+                                    System.out.println("O " + clientesNaFila.peek().nome + " está sendo atendido.");
                                     clientesNaFila.poll();
-                                    Thread.sleep(800);
+                                    Thread.sleep(1200);
                                     qtdeClienteAtendidos++;
                                     System.out.println("Foram atendidos " + qtdeClienteAtendidos + " clientes");
                     }
@@ -37,28 +38,28 @@ public class Barbearia extends Thread{
 
     public synchronized void aguardaVez(Cliente cliente) {
             try {
-                    if (!clientesJaAtendidos.contains(cliente)) {
+                    if (dormindo == false) {
                             if (clientesNaFila.size() < qtdeCadeiras) {
                                     clientesNaFila.offer(cliente);
                                     clientesJaAtendidos.add(cliente);
-                                    System.out.println("Quantidade clientes esperando para cortar = "+ clientesNaFila.size());
+                                    System.out.println("Quantidade de clientes na barbearia = "+ clientesNaFila.size());
                             } else {
-                                    System.out.println("Um Cliente chegou mas não existem cadeiras vazias, ele voltará em breve.");
-                                    Thread.sleep((int) (Math.random() * 3000));
+                                    System.out.println("Um Cliente chegou mas não existem cadeiras vazias, ele foi embora.");
+                                    this.interrupted();
                             }
                     }
 
-                    while (clientesNaFila.size() < qtdeCadeiras) {
-                            if (dormindo) {
-                                    System.out.println("Acordando o barbeiro...");
-                                    notify();
-                                    dormindo = false;
-                            }
-                            wait();
+                    
+                    if (dormindo) {
+                        System.out.println("Acordando o barbeiro...");
+                        dormindo = false;
+                        notify();
+                        wait();
+
                     }
                     notifyAll();
 
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                     e.printStackTrace();
             }
     }
